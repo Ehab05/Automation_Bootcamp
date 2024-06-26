@@ -11,8 +11,7 @@ class TestLibraryFunctions(unittest.TestCase):
         self.book = Book('ehab', 'hasan', '2024', 'drama')
 
     def test_book_title(self):
-        book = Book('ehab', 'hasan', '2024', 'drama')
-        self.assertIs('ehab', book.title)
+        self.assertIs('ehab', self.library1.list_books())
 
     def test_add_book(self):
         self.library1.add_book(self.book)
@@ -21,5 +20,3 @@ class TestLibraryFunctions(unittest.TestCase):
     def test_delete_book(self):
         self.library1.delete_book(self.book.title)
         self.assertNotIn(self.book, self.library1.books)
-
-

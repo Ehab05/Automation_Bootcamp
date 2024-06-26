@@ -1,8 +1,6 @@
 import unittest
 from Library_Homework.Book import Book
-import sys
 
-print(sys.path)
 
 
 class TestBookFunction(unittest.TestCase):

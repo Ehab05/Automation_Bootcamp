@@ -15,7 +15,7 @@ class Book:
 
     @property
     def author(self):
-        return self.author
+        return self._author
 
     @author.setter
     def author(self, value):
@@ -31,7 +31,7 @@ class Book:
 
     @property
     def genre(self):
-        return self.author
+        return self._genre
 
     @genre.setter
     def genre(self, value):
@@ -39,3 +39,20 @@ class Book:
 
     def __str__(self):
         return f"{self.title} by {self.author} ({self.publication_year}), Genre: {self.genre}"
+
+    def to_dict(self):
+        return {
+            'title': self._title,
+            'author': self._author,
+            'publication_year': self._publication_year,
+            'genre': self._genre
+        }
+
+    @staticmethod
+    def from_dict(data):
+        return Book(
+            title=data.get('title'),
+            author=data.get('author'),
+            publication_year=data.get('publication_year'),
+            genre=data.get('genre')
+        )

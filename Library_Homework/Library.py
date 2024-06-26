@@ -15,7 +15,9 @@ class Library:
             # Attempt to open the JSON file specified by self.library_file
             with open(self.library_file, 'r') as file:
                 # Load JSON data from the file and convert each object to a Book instance
-                self.books = json.load(file, object_hook=lambda d: Book(**d))
+                # self.books = json.load(file, object_hook=lambda d: Book(**d))
+                self.books = json.load(self.library_file, object_hook=Book.from_dict)
+
         except FileNotFoundError:
             # If the file is not found, handle the exception by setting books to an empty
             self.books = []
