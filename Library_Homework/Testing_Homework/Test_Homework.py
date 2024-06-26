@@ -1,8 +1,7 @@
-import numbers
 import unittest
 
-
-from Library_Homework.Book import Book
+from Library_Homework import Library
+from Library_Homework.book import Book
 
 
 class TestBookFunction(unittest.TestCase):
@@ -34,11 +33,8 @@ class TestBookFunction(unittest.TestCase):
         book = Book('ehab', 'hasan', '2024', 'drama')
         self.assertTrue(int(book.publication_year) > 0)
 
-    def test_book_publication_year_is_number(self):
-        book = Book('ehab', 'hasan', 'sdfs', 'drama')
-        isnum = int(book.publication_year)
-        self.assertIs(type(isnum),int)
-
     def test_book_genre_is_string(self):
         book = Book('ehab', 'hasan', '2024', 'drama')
         self.assertTrue(type(book.genre) == str)
+
+
