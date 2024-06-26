@@ -1,13 +1,15 @@
 import unittest
+from Library_Homework.Book import Book
+import sys
 
-from Library_Homework import Library
-from Library_Homework.book import Book
+print(sys.path)
 
 
 class TestBookFunction(unittest.TestCase):
     def test_book_title(self):
         book = Book('ehab', 'hasan', '2024', 'drama')
         self.assertIs('ehab', book.title)
+        self.assertIsNot('eha', book.title)
 
     def test_book_author(self):
         book = Book('ehab', 'hasan', '2024', 'drama')
@@ -36,5 +38,3 @@ class TestBookFunction(unittest.TestCase):
     def test_book_genre_is_string(self):
         book = Book('ehab', 'hasan', '2024', 'drama')
         self.assertTrue(type(book.genre) == str)
-
-
