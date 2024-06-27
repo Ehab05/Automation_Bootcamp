@@ -40,19 +40,12 @@ class Book:
     def __str__(self):
         return f"{self.title} by {self.author} ({self.publication_year}), Genre: {self.genre}"
 
-    def to_dict(self):
-        return {
-            'title': self._title,
-            'author': self._author,
-            'publication_year': self._publication_year,
-            'genre': self._genre
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return Book(
-            title=data.get('title'),
-            author=data.get('author'),
-            publication_year=data.get('publication_year'),
-            genre=data.get('genre')
-        )
+    # def create_book_from_dict(d):
+    #     book = Book()
+    #     if 'title' in d:
+    #         book.title = d['title']
+    #     if 'author' in d:
+    #         book.author = d['author']
+    #     if 'year' in d:
+    #         book.year = d['year']
+    #     return book
