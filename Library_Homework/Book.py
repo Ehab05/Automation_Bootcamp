@@ -40,12 +40,12 @@ class Book:
     def __str__(self):
         return f"{self.title} by {self.author} ({self.publication_year}), Genre: {self.genre}"
 
-    # def create_book_from_dict(d):
-    #     book = Book()
-    #     if 'title' in d:
-    #         book.title = d['title']
-    #     if 'author' in d:
-    #         book.author = d['author']
-    #     if 'year' in d:
-    #         book.year = d['year']
-    #     return book
+    @classmethod
+    def load_book(cls, d):
+        # Process the dictionary d and return a Book instance
+        return cls(
+            title=d.title,
+            author=d.author,
+            publication_year=d.publication_year,
+            genre=d.genre
+        )
