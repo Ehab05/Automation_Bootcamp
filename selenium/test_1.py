@@ -1,4 +1,3 @@
-import time
 from selenium import webdriver
 from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service
@@ -6,8 +5,8 @@ from selenium.webdriver.common.by import By
 
 
 def test_google_search():
+    driver = webdriver.Chrome()
     try:
-        driver = webdriver.Chrome(service=Service(r"E:\5-tech\Autmation\python_selenium\chromedriver\chromedriver.exe"))
         driver.get("http://www.google.com/")
         driver.implicitly_wait(10)
         search_field = driver.find_element(By.NAME, "q")
@@ -19,5 +18,4 @@ def test_google_search():
     except Exception as e:
         print(f"we didn't find it sorry:{e}")
 
-    finally:
-        driver.quit()
+    driver.quit()
