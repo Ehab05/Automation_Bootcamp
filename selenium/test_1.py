@@ -1,21 +1,21 @@
-from selenium import webdriver
-from selenium.webdriver import Keys
-from selenium.webdriver.chrome.service import Service
+import logic
 from selenium.webdriver.common.by import By
+import infra
 
 
 def test_google_search():
-    driver = webdriver.Chrome()
+    setup = infra.WebDriverSetup()
+    driver = setup.get_driver('chrome')
     try:
         driver.get("http://www.google.com/")
         driver.implicitly_wait(10)
-        search_field = driver.find_element(By.NAME, "q")
-        search_field.send_keys("Python programming", Keys.ENTER)
-        search_result = driver.find_element(By.CSS_SELECTOR, "h3.LC20lb.MBeuO.DKV0Md")
-        assert "Python For Beginners" in search_result.text
-        print(f"Yay the test has passed we found : {search_result.text}")
+        google_search = logic.SearchGoogle(driver)
+        google_search.search_by_text("Python programming")
+        check = google_search.check_search_results("Python For Beginners")
+        assert check == "Python For Beginners"
+        print(f"Yay the test has passed we found : {check}")
 
     except Exception as e:
-        print(f"we didn't find it sorry:{e}")
+        print(f"We didn't find it sorry:{e}")
 
     driver.quit()
